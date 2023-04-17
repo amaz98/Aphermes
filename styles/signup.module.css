@@ -1,0 +1,8 @@
+.displaybox{
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100wh;
+  align-content: center;
+}
+

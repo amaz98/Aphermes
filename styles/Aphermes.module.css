@@ -1,0 +1,164 @@
+.aphermes {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.aphermes::-webkit-scrollbar {
+  width: 5px;
+}
+
+.aphermesleftcell {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.aphermesrightcell {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 75px;
+}
+
+.allcryptocell {
+  background-color: rgba(95, 0, 160, 1);
+  height: 65rem;
+  width: 80%;
+  align-self: center;
+  border-radius: 30px;
+  margin-bottom: 120px;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.45);
+}
+
+.cryptolist {
+  background-color: transparent;
+  height: 85%;
+  overflow-y: auto;
+  width: 99.8%;
+  align-self: center;
+}
+
+.cryptolist::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.cryptolist::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+  border-radius: 1000px;
+}
+
+.cryptolist::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 1000px;
+}
+
+.cryptolist::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.rightcells {
+  background-color: rgba(95, 0, 160, 1);
+  height: 31rem;
+  width: 70%;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 30px;
+  margin-bottom: 40px;
+  box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.45);
+}
+
+.rightcelldata::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.rightcelldata::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+.rightcelldata {
+  background-color: transparent;
+  height: 70%;
+  overflow-x: hidden;
+  overflox-y: auto;
+  width: 99.9%;
+  align-self: center;
+}
+
+.tokentext {
+  list-style-type: none;
+  text-decoration: none;
+  color: white;
+  padding-left: 10px;
+  padding-top: 50px;
+}
+
+.tokentext th {
+  padding-right: 120px;
+  white-space: nowrap;
+  padding-bottom: 10px;
+  text-decoration: underline;
+  font-family: "Roboto", sans-serif;
+}
+
+.tokentext td {
+  padding-left: 10px;
+  padding-right: 140px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+/* Light background color for odd rows */
+.databody tr:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.pagination {
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  font-size: 13px;
+}
+
+.datacellheader {
+  display: flex;
+  justify-content: center;
+  align-font: center;
+  align-content: center;
+  //background-color: white;
+  padding-bottom: 30px;
+}
+
+.headertext {
+  align-font: center;
+  align-self: center;
+  align-content: center;
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+  text-decoration: underline;
+  color: white;
+}
+
+.logodiv {
+  display: flex;
+}
+
+.logo {
+  margin-right: 5px;
+  align-self: center;
+}
