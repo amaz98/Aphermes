@@ -5,13 +5,13 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron&family=PT+Sans+Narrow&display=swap"
         rel="stylesheet"
       ></link>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron&family=PT+Sans+Narrow&family=Roboto:wght@300&display=swap"
         rel="stylesheet"

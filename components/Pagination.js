@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../styles/Aphermes.module.css";
 import { IonIcon } from "@ionic/react";
 import { caretForwardOutline, caretBackOutline } from "ionicons/icons";
+import CustomIonIcon from "./CustomIonIcon";
 
 const Pagination = ({ totalPages, currentPage, handlePageChange }) => {
   return (
@@ -11,7 +12,7 @@ const Pagination = ({ totalPages, currentPage, handlePageChange }) => {
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
-        <IonIcon style={{ alignSelf: "center" }} icon={caretBackOutline} />
+        <CustomIonIcon icon={caretBackOutline} role='img'/>
       </button>
       <span
         style={{
@@ -27,7 +28,7 @@ const Pagination = ({ totalPages, currentPage, handlePageChange }) => {
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
-        <IonIcon style={{ alignSelf: "center" }} icon={caretForwardOutline} />
+       <CustomIonIcon icon={caretForwardOutline} role='img' />
       </button>
     </div>
   );

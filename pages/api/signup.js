@@ -2,6 +2,11 @@ import dbConnect from "@/lib/mongodb";
 import User from "../../models/User";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken'
+import { serialize } from "cookie";
+import Email from "next-auth/providers/email";
+
+
+
 
 const handler = async (req, res) => {
   const { method } = req;
@@ -11,35 +16,12 @@ const handler = async (req, res) => {
   switch (method) {
     case "POST":
       try {
-        const { email, password } = req.body;
-
-        if (!email || !password) {
-          return res.status(400).json({ message: "Email and password are required" });
+        const {email,password} = req.body;
+        if(!email || !password){
+          return res.status(400).json({message:"Email and password required"});
         }
-
-        const existingUser = await User.findOne({ email });
-
-        if (existingUser) {
-          return res.status(400).json({ message: "Email already in use" });
-        }
-        const salt = await bcrypt.genSalt(10);
-        const hash = await bcrypt.hash(password,salt)
-        const newUser = await User.create({ email, password: hash});
-
-        if(newUser){
-          const token = jwt.sign({userId: user._id}, process.env.JWT_KEY)
-          res.cookie('token', token, {
-            httpOnly:true,
-            secure: process.env.NODE_ENV !== 'development',
-            sameSite: 'strict',
-            maxAge:  86400000,
-          })
-          res.status(201).json({ message: "User created successfully", user: newUser });
-        } else {
-          res.status(201).json({message:"Unable to create user"})
-        }
-
       } catch (error) {
+        console.error("Error in /api/signup:", error);
         res.status(500).json({ message: "Error creating user", error: error.message });
       }
       break;

@@ -3,12 +3,15 @@ import styles from "../styles/Navbar.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { menuOutline, closeOutline } from "ionicons/icons";
-import { IonIcon } from "@ionic/react";
-import { useAuth } from "@/contexts/AuthContext";
+import Cookies from 'js-cookie';
+import CustomIonIcon from "./CustomIonIcon";
+import useAuth from "@/hooks/useAuth";
+import { destroyCookie } from "nookies";
+
 
 const Navbar = () => {
-  const {isLoggedIn, setIsLoggedIn} = useAuth();
   const [menuActive, setMenuActive] = useState(false);
+  const {user} = useAuth();
 
   const handleMenu = () => {
     setMenuActive(!menuActive);
@@ -19,8 +22,10 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    console.log("handlelogout called")
+    Cookies.remove("token", {path:'/'});
     resetMenu();
+    window.location.reload()
   }
   return (
     <div className={styles.navbar}>
@@ -29,6 +34,7 @@ const Navbar = () => {
           src="/assets/aphermeslogo.png"
           width={400}
           height={100}
+          priority={true}
           style={{
             alignSelf: "center",
             paddingLeft: "50px",
@@ -59,10 +65,11 @@ const Navbar = () => {
               </Link>
               </li>
               { 
-              isLoggedIn ?
+              user ?
               <li>
               <Link
                 onClick={handleLogout}
+                href="/logout"
                 className={styles.dropdownlink}
               >
                 Logout
@@ -90,12 +97,12 @@ const Navbar = () => {
             Portfolio
           </Link>
         </li>
-        { 
-              isLoggedIn ?
+        { user ?
               <li>
               <Link
                 onClick={handleLogout}
                 className={styles.link}
+                href="/logout"
               >
                 Logout
               </Link> </li>:
@@ -111,9 +118,9 @@ const Navbar = () => {
       </ul>
       <button onClick={handleMenu} className={styles.hamburgerMenuButton}>
         {menuActive ? (
-          <IonIcon icon={closeOutline} className={styles.icon}></IonIcon>
+          <CustomIonIcon icon={closeOutline} style={{color:'white', fontSize:'60px', alignItem:'center'}} role='img'/>
         ) : (
-          <IonIcon icon={menuOutline} className={styles.icon}></IonIcon>
+          <CustomIonIcon icon={menuOutline} style={{color:'white', fontSize:'60px', alignItem:'center'}} role='img'/>
         )}
       </button>
     </div>

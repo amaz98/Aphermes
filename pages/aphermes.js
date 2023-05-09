@@ -65,9 +65,9 @@ const Aphermes = () => {
       <div className={styles.aphermesleftcell}>
         <div className={styles.allcryptocell}>
           <div className={styles.datacellheader}>
-            <text className={styles.headertext}>
+            <p className={styles.headertext}>
               Top 500 Cryptocurrencies (Mcap)
-            </text>
+            </p>
           </div>
           <div className={styles.cryptolist}>
             <AllCryptoTable data={data} />

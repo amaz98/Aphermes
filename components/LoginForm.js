@@ -3,10 +3,9 @@ import {Formik, Form, Field} from 'formik';
 import axios from 'axios';
 import styles from "../styles/genericform.module.css"
 import Link from "next/link";
-import { useAuth } from "@/contexts/AuthContext";
+import {signIn} from "next-auth/react";
 
 const LoginForm = () => {
-    const {setIsLoggedIn} = useAuth();
     return (
         <Formik initialValues={{
             email:'',
@@ -14,18 +13,7 @@ const LoginForm = () => {
         }}
         onSubmit={async (data) => {
             try {
-                const response = await axios({
-                    method:"post",
-                    timeout:100000,
-                    url: "/api/login",
-                    data:{
-                        email:values.email,
-                        password:values.password,
-                    }
-                }).then(async (res) => {
-                    setIsLoggedIn(true)
-                    console.log(res);
-                })
+                signIn("credentials", {...data, redirect: false})
             } catch (err){
                 console.log(err)
             }
@@ -34,13 +22,13 @@ const LoginForm = () => {
             {({handleSubmit}) => {
                 return(
                 <Form onSubmit={handleSubmit} className={styles.form}>
-                    <text className={styles.headertext}>Login</text>
+                    <p className={styles.headertext}>Login</p>
                     <label className={styles.label} htmlFor='email'>Email</label>
                     <Field className={styles.formbox} placeholder="Enter Email" id="email"  name="email" type="email"/>
                     <label className={styles.label} htmlFor='password'>Password</label>
                     <Field className={styles.formbox} placeholder="Enter Password" id="password"  name="password" type="password"/>
                     <button className={styles.button}>Submit</button>
-                    <text className={styles.bottomtext}>Dont have an account?<Link href="/signup">Sign Up here</Link></text>
+                    <p className={styles.bottomtext}>Dont have an account?<Link href="/signup">Sign Up here</Link></p>
                 </Form>
                 )
             }}

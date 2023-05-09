@@ -20,7 +20,6 @@ const nextConfig = {
   images: {
     domains: ['assets.coingecko.com'],
   },
- 
   reactStrictMode: true,
 };
 

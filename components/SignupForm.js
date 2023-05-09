@@ -3,8 +3,11 @@ import {Formik, Form, Field} from 'formik';
 import axios from 'axios';
 import styles from "../styles/genericform.module.css"
 import Link from "next/link";
+import useAuth from '@/hooks/useAuth';
+
 
 const SignupForm = () => {
+    const {getUser, user} = useAuth();
     return (
         <Formik initialValues={{
             email:'',
@@ -31,13 +34,13 @@ const SignupForm = () => {
             {({handleSubmit}) => {
                 return(
                 <Form onSubmit={handleSubmit} className={styles.form}>
-                    <text className={styles.headertext}>Create an account</text>
+                    <p className={styles.headertext}>Create an account</p>
                     <label className={styles.label} htmlFor='email'>Email</label>
                     <Field className={styles.formbox} placeholder="Enter Email" id="email"  name="email" type="email"/>
                     <label className={styles.label} htmlFor='password'>Password</label>
                     <Field className={styles.formbox} placeholder="Enter Password" id="password"  name="password" type="password"/>
-                    <button className={styles.button}>Submit</button>
-                    <text className={styles.bottomtext}>Already have an account?<Link href="/login">Login here</Link></text>
+                    <button className={styles.button}>Sign Up</button>
+                    <p className={styles.bottomtext}>Already have an account?<Link href="/login">Login here</Link></p>
                 </Form>
                 )
             }}
